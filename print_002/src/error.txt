@@ -1,0 +1,3 @@
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s
+     Running `/home/dguedes/rust/rust_course/print_002/target/debug/print_002`
+An error occurred: invalid input
