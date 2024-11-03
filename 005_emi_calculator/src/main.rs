@@ -9,22 +9,28 @@ fn main() {
     let currency_symbol = "R$"; // $, £, ¥, ₹
 
     println!("Enter the loan amout (principal):");
-    io::stdin().read_line(&mut input).expect("Failed to read line");
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read line");
     let principal: f64 = input.trim().parse().expect("Input number only!");
     input.clear();
 
     println!("Enter the annual interest rate (as a percentage, e.g., 7 for 7%):");
-    io::stdin().read_line(&mut input).expect("Failed to read line");
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read line");
     let annual_rate: f64 = input.trim().parse().expect("Input number only!");
     input.clear();
 
     println!("Enter the number of months for repayment:");
-    io::stdin().read_line(&mut input).expect("Failed to read line");
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read line");
     let months: u32 = input.trim().parse().expect("Input number only!");
     input.clear();
 
     let emi = calculate_emi(principal, annual_rate, months);
-    println!("the monthly EMI is: {}{}", currency_symbol, emi);
+    println!("the monthly EMI is: {}{:.2}", currency_symbol, emi);
 }
 
 /*
