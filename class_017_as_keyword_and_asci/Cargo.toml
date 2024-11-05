@@ -1,0 +1,6 @@
+[package]
+name = "class_017_as_keyword_and_asci"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
