@@ -24,7 +24,7 @@ fn convert_seconds_to24hr_format(total_seconds: u32) -> String {
 }
 
 fn read_from_stdin() -> String {
-    let mut input = String::new();
+    let mut input = String::new(); //this initialize an empty string
 
     println!("Enter the time of the day in seconds(0 to 86,399):");
     io::stdin().read_line(&mut input).expect("Failed to read line");
@@ -33,7 +33,10 @@ fn read_from_stdin() -> String {
 }
 
 fn parse_string_as_u32(input: String) -> u32 {
-    let total_seconds: u32 = input.trim().parse().expect("Input number only without any sign!");
+    let total_seconds: u32 = input
+        .trim()
+        .parse() // this method try to convert the string to a number
+        .expect("Input number only without any sign!");
 
     return total_seconds;
 }
@@ -73,12 +76,26 @@ mod test {
         // }
     }
 
-    //   mod user_input {
-    //         use super::super::*;
+    mod parse_user_input {
+        // keep all test cases to uniot test get_user_input
 
-    //         #[test]
-    //         fn test_get_user_input() {
-    //             assert_eq!(get_user_input(), 0);
-    //         }
-    //   }
+        // 1. when user input is 0, function must return 0
+        #[test]
+        fn test_user_enters_zero_function_must_return_zero() {
+            assert_eq!(0, super::super::parse_string_as_u32("0\n\r".to_string()));
+        }
+        // 2. when user enters whole number, function must return whole number
+        // 3. when user enters a negative number, function must panic
+        // 4. when user enters a decimal number, function must panic
+        // 5. when user enters any character other than number, function must panic
+        // 6. when user enters nothing(just hits enter key), function must panic
+        // 7. when user enters a number which is greater than max value of u32, function must panic
+
+        #[test]
+        #[should_panic]
+        fn when_user_enters_a_number_which_is_greater_than_max_value_of_u32_function_must_panic() {
+            let a_big_number_as_string = "4294967296\n\r".to_string();
+            super::super::parse_string_as_u32(a_big_number_as_string);
+        }
+    }
 }
