@@ -85,12 +85,39 @@ mod test {
             assert_eq!(0, super::super::parse_string_as_u32("0\n\r".to_string()));
         }
         // 2. when user enters whole number, function must return whole number
+        #[test]
+        fn test_user_enters_whole_number_function_must_return_whole_number() {
+            assert_eq!(123, super::super::parse_string_as_u32("123\n\r".to_string()));
+        }
         // 3. when user enters a negative number, function must panic
+        #[test]
+        #[should_panic]
+        fn when_user_enters_a_negative_number_function_must_panic() {
+            let a_negative_number_as_string = "-123\n\r".to_string();
+            super::super::parse_string_as_u32(a_negative_number_as_string);
+        }
         // 4. when user enters a decimal number, function must panic
+        #[test]
+        #[should_panic]
+        fn when_user_enters_a_decimal_number_function_must_panic() {
+            let a_decimal_number_as_string = "123.45\n\r".to_string();
+            super::super::parse_string_as_u32(a_decimal_number_as_string);
+        }
         // 5. when user enters any character other than number, function must panic
+        #[test]
+        #[should_panic]
+        fn when_user_enters_any_character_other_than_number_function_must_panic() {
+            let a_character_as_string = "abc\n\r".to_string();
+            super::super::parse_string_as_u32(a_character_as_string);
+        }
         // 6. when user enters nothing(just hits enter key), function must panic
+        #[test]
+        #[should_panic]
+        fn when_user_enters_nothing_function_must_panic() {
+            let nothing_as_string = "\n\r".to_string();
+            super::super::parse_string_as_u32(nothing_as_string);
+        }
         // 7. when user enters a number which is greater than max value of u32, function must panic
-
         #[test]
         #[should_panic]
         fn when_user_enters_a_number_which_is_greater_than_max_value_of_u32_function_must_panic() {
