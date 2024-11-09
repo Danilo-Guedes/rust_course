@@ -23,14 +23,23 @@ fn convert_seconds_to24hr_format(total_seconds: u32) -> String {
     format_24h
 }
 
-fn get_user_input() -> u32 {
+fn read_from_stdin() -> String {
     let mut input = String::new();
 
     println!("Enter the time of the day in seconds(0 to 86,399):");
     io::stdin().read_line(&mut input).expect("Failed to read line");
+
+    return input;
+}
+
+fn parse_string_as_u32(input: String) -> u32 {
     let total_seconds: u32 = input.trim().parse().expect("Input number only without any sign!");
 
     return total_seconds;
+}
+
+fn get_user_input() -> u32 {
+    return parse_string_as_u32(read_from_stdin());
 }
 
 #[cfg(test)]
@@ -62,7 +71,6 @@ mod test {
         // fn test_when_total_is_negative_must_panic() {
         //     super::super::convert_seconds_to24hr_format(-2); << THIS WILL ERROR
         // }
-
     }
 
     //   mod user_input {
