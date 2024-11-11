@@ -35,14 +35,17 @@ fn main() {
     println!("type of value3: {}", type_of(&value3));
     println!("type of value4: {}", type_of(&value4));
 
-    println!("Here the rust compiler tranform value3 and value4 in u8: {}", sum3);
+    println!(
+        "Here the rust compiler tranform value3 and value4 in u8: {}",
+        sum3
+    );
 
     // MULTIPLYING FLOAT AND INTEGER TO SEE HOW THE COMPILER WILL BEHAVIOUR
 
     let value5 = 50;
     let value6 = 12.3;
 
-    let result = value5 * value6; // we can cast value6 to i32 to avoid the error [ value5 * (value6 as i32)]
+    let result = value5 * (value6 as i32); // we can cast value6 to i32 to avoid the error [ value5 * (value6 as i32)]
 
     println!("result of multiplication is {}", result); // this will error (no implementation for `{integer} * {float}` in Mul trait)
 
