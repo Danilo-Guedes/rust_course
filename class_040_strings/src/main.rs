@@ -42,5 +42,5 @@ fn main() {
 
     let string4 = string3.clone(); // here we are creating another copy of the data in the heap memory
 
-    println!("{string3}");
+    println!("{string4}");
 }
