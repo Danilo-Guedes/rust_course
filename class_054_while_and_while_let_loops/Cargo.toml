@@ -1,0 +1,6 @@
+[package]
+name = "class_054_while_and_while_let_loops"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
