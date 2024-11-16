@@ -6,10 +6,15 @@ fn main() {
         "2024".to_string(),
     );
 
-    match date_tuple {
+    match date_tuple { 
         (ref day, ..) if day == "Tuesday" => println!("It's Tuesday!"), // ref means that the variable day is a reference to the value instead of moving it
         _ => println!("It's not Tuesday!"),
     }
+
+    // here we could also instead of using ref, use & to create a reference to the value
+
+    // match &date_tuple {
+    
 
     println!("date_tuple: {:?}", date_tuple); // this will not compile, because date_tuple has been partially moved
 }
