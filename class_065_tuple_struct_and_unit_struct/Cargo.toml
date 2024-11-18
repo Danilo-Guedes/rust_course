@@ -1,0 +1,6 @@
+[package]
+name = "class_065_tuple_struct_and_unit_struct"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
