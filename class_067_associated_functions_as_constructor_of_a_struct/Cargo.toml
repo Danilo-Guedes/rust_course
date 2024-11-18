@@ -1,0 +1,6 @@
+[package]
+name = "class_067_associated_functions_as_constructor_of_a_struct"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
