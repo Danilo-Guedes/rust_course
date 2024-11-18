@@ -1,0 +1,6 @@
+[package]
+name = "class_062_creating_and_initializing_structs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

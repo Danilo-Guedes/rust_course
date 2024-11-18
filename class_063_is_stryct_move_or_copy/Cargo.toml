@@ -1,0 +1,6 @@
+[package]
+name = "class_063_is_stryct_move_or_copy"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
