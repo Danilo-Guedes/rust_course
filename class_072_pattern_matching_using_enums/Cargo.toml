@@ -1,0 +1,6 @@
+[package]
+name = "class_072_pattern_matching_using_enums"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
