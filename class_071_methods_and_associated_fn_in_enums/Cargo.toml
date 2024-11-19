@@ -1,0 +1,6 @@
+[package]
+name = "class_071_methods_and_associated_fn_in_enums"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
