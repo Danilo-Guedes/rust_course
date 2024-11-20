@@ -1,0 +1,6 @@
+[package]
+name = "class_080_weather_station_exerc"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
