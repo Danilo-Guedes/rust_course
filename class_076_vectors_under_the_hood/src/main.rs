@@ -38,6 +38,8 @@ fn main() {
 
     println!("v2.capacity() = {}", v2.capacity());
 
+    // we we exceed the capacity, the vector will reallocate memory in the heap anyway
+
     println!("\n\n---------------------\n\n");
 
 
