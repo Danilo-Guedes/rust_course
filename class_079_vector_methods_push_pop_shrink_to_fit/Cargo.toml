@@ -1,0 +1,6 @@
+[package]
+name = "class_079_vector_methods_push_pop_shrink_to_fit"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
