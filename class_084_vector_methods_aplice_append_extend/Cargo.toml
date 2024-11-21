@@ -1,0 +1,6 @@
+[package]
+name = "class_084_vector_methods_aplice_append_extend"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
