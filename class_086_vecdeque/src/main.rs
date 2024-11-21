@@ -7,6 +7,8 @@ fn main() {
 
     // VecDeque is a double-ended queue implemented with a growable ring buffer.
 
+    // designed to be a double ended queue, it can be used as a stack, a queue, or a double-ended queue.
+
     // It has O(1) time complexity for push_back, push_front, pop_back, pop_front, append, and split_at_mut.
 
     // VecDeque is a good choice when you need a queue with fast push and pop operations.
