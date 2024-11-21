@@ -1,0 +1,6 @@
+[package]
+name = "class_082_vector_methods_retain_and_retain_mut"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
