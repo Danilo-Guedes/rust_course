@@ -1,0 +1,6 @@
+[package]
+name = "class_083_vector_methods_split_and_friends"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
