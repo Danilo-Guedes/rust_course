@@ -19,7 +19,7 @@ fn main() {
     println!("\n\n----------------------------\n\n");
 
     // notice that to confidently use unwrap and expect you need to make SURE your fn or method returns an Option<T> type
-    // if not is better to use pattern matching to make your code more robust and easier to maintain
+    // if not is better to use pattern matching or "?" to make your code more robust and easier to maintain
 
 }
 
