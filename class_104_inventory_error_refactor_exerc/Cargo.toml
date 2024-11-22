@@ -1,0 +1,6 @@
+[package]
+name = "class_104_inventory_error_refactor_exerc"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
