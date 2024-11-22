@@ -9,7 +9,7 @@ fn main() {
 
     println!("\n\n----------------------------\n\n");
 
-    // UNWRAP_OR 
+    // UNWRAP_OR  it returns the value if the result is a OK variant, otherwise it returns the value passed as argument
 
     let res2 = add_strings("Hello", "").unwrap_or("ERROR: string cannot be empty".to_string()); 
 
