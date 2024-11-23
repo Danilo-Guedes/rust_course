@@ -1,0 +1,6 @@
+[package]
+name = "class_109_generics_exerc"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
