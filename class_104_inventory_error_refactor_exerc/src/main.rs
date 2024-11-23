@@ -87,42 +87,57 @@ impl Inventory {
         }
 
         //Update the item's quantity
-        //TODO
+        if let Some(quantity) = quantity {
+            item.quantity = quantity;
+        }
 
         //Updat the item's price
-        //TODO
+        if let Some(price) = price {
+            item.price = price;
+        }
 
         Ok(())
     }
 
-    fn delete_item(&mut self, id: u32) {
+    fn delete_item(&mut self, id: u32) -> Result<(), String> {
         //remove this macro once you complete the TODOs
-        todo!();
+        // todo!();
 
         //Implement the logic to remove Item by Id
         //Hint1 : explore remove() method of HashMap
         //Hint2 : Explore is_none() method of Option Type
         //Return Result::Err() if item not found
         //Result::Err() should contain enum error code ItemNotFound
+
+        let found_item = self.items.remove(&id);
+
+        if found_item.is_none() {
+            return Err("ItemNotFound".to_string());
+        }
+
+        Ok(())
     }
 
     fn list_items(&self) -> Vec<&Item> {
         self.items.values().collect()
     }
 
-    fn find_item(&self, name: &str) -> &Item {
+    fn find_item(&self, name: &str) -> Result<&Item, String> {
         //remove this macro once you complete the TODOs
-        todo!();
+        // todo!();
 
         //This would panic if item to be found does not exist.
         //Repalce it by returning Result::Err()
         //Result::Err() should contain enum error code ItemNotFound
         //Hint : Explore using ok_or() in place of expect()
         //ok_or() is covered in lecture 90: Converting Option<T> to Result<T, E> type
-        self.items
+        let found_item = self
+            .items
             .values()
             .find(|item| item.name == name)
-            .expect("Item not found!")
+            .ok_or("ItemNotFound Error".to_string())?;
+
+        Ok(found_item)
     }
 }
 
@@ -155,7 +170,7 @@ fn main() {
     }
 
     println!("/////Inventory/////");
-    for item in inventory.list_items().unwrap() {
+    for item in inventory.list_items() {
         println!("{:?}", item);
     }
     println!("/////End/////");
@@ -163,7 +178,11 @@ fn main() {
     inventory
         .update_item(1, Some("Gaming Laptop".to_string()), None, Some(1299.99))
         .unwrap();
-    inventory.delete_item(2).unwrap();
+
+    match inventory.delete_item(2) {
+        Ok(_) => println!("Item Deleted..."),
+        Err(e) => eprintln!("Error: {:?}", e),
+    }
 
     match inventory.find_item("Gaming Laptop") {
         Ok(item) => println!("Found item: {:?}", item),
