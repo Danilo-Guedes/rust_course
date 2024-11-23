@@ -35,13 +35,14 @@ impl Inventory {
         }
     }
 
-    fn add_item(&mut self, name: String, quantity: u32, price: f64) -> Result<(), String> {
+    fn add_item(&mut self, name: String, quantity: u32, price: f64) -> Result<(), InventoryError> {
         if self.items.values().any(|item| item.name == name) {
             //Note: replace the panic!() by returning Result::Err()
             // Result::Err() should contain enum error code DuplicateItem with
             // existing item as it associated data.
 
-            return Err("Items Duplicados".to_string());
+            // return Err("Items Duplicados".to_string());
+            return Err(InventoryError::DuplicateItem);
         }
 
         //If it is a new Item, add it to Inventory
@@ -68,7 +69,7 @@ impl Inventory {
         name: Option<String>,
         quantity: Option<u32>,
         price: Option<f64>,
-    ) -> Result<(), String> {
+    ) -> Result<Item, InventoryError> {
         //remove this macro once you complete the TODOs
         // todo!();
 
@@ -79,7 +80,7 @@ impl Inventory {
         let item = self
             .items
             .get_mut(&id)
-            .ok_or(format!("Item with ID {} not found!", id))?;
+            .ok_or(InventoryError::ItemNotFound)?;
 
         //Update the item's name
         if let Some(name) = name {
@@ -96,10 +97,10 @@ impl Inventory {
             item.price = price;
         }
 
-        Ok(())
+        Ok(item.clone())
     }
 
-    fn delete_item(&mut self, id: u32) -> Result<(), String> {
+    fn delete_item(&mut self, id: u32) -> Result<Item, InventoryError> {
         //remove this macro once you complete the TODOs
         // todo!();
 
@@ -109,20 +110,20 @@ impl Inventory {
         //Return Result::Err() if item not found
         //Result::Err() should contain enum error code ItemNotFound
 
-        let found_item = self.items.remove(&id);
+        let deleted_item = self.items.remove(&id);
 
-        if found_item.is_none() {
-            return Err("ItemNotFound".to_string());
+        if deleted_item.is_none() {
+            return Err(InventoryError::ItemNotFound);
         }
 
-        Ok(())
+        Ok(deleted_item.unwrap())
     }
 
     fn list_items(&self) -> Vec<&Item> {
         self.items.values().collect()
     }
 
-    fn find_item(&self, name: &str) -> Result<&Item, String> {
+    fn find_item(&self, name: &str) -> Result<&Item, InventoryError> {
         //remove this macro once you complete the TODOs
         // todo!();
 
@@ -135,7 +136,7 @@ impl Inventory {
             .items
             .values()
             .find(|item| item.name == name)
-            .ok_or("ItemNotFound Error".to_string())?;
+            .ok_or(InventoryError::ItemNotFound)?;
 
         Ok(found_item)
     }
@@ -169,18 +170,19 @@ fn main() {
         Err(e) => println!("Error: {:?}", e),
     }
 
-    println!("/////Inventory/////");
+    println!("\n\n/////Inventory/////");
     for item in inventory.list_items() {
         println!("{:?}", item);
     }
-    println!("/////End/////");
+    println!("/////End/////\n\n");
 
-    inventory
-        .update_item(1, Some("Gaming Laptop".to_string()), None, Some(1299.99))
-        .unwrap();
+    match inventory.update_item(1, Some("Gaming Laptop".to_string()), None, Some(1299.99)) {
+        Ok(item) => println!("Updating {}...", item.name),
+        Err(e) => println!("Error: {:?}", e),
+    }
 
     match inventory.delete_item(2) {
-        Ok(_) => println!("Item Deleted..."),
+        Ok(item) => println!("Deleting {}...", item.name),
         Err(e) => eprintln!("Error: {:?}", e),
     }
 
