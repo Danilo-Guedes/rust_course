@@ -1,0 +1,6 @@
+[package]
+name = "class_106_generic_syntax_and_writing_generics_functions"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
