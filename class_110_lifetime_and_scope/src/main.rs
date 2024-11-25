@@ -1,4 +1,4 @@
-fn extend_string<'a>(original: &'a mut String, data: &'a str) -> &'a str {
+fn extend_string<'a>(original: &'a mut String, data: &str) -> &'a str {
     original.push_str(" ");
     original.push_str(data);
     original
