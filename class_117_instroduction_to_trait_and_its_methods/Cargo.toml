@@ -1,0 +1,6 @@
+[package]
+name = "class_117_instroduction_to_trait_and_its_methods"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
