@@ -17,6 +17,6 @@ fn main() {
     println!("ret = {}", ret);
 }
 
-fn fun(data: &MyStruct) -> &str {
+fn fun<'a,'b,'c>(data: &'a MyStruct<'b, 'c>) -> &'b str {
     data.data1
 }
