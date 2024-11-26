@@ -39,7 +39,7 @@ fn main() {
     let vec_of_shapes: Vec<&dyn Shape> = vec![&circle, &rectangle];
     // this dyn is called trait objects, this is also a DST (dynamically sizes type), which allow to use dynamic dispatch,
     // where the function to be called is determined at runtime
-    // it stores a fat pointer, which is a pointer to the object and a pointer to the virtual table (vtable wich contains the function pointers)
+    // it stores a fat pointer, which is a pointer to the object data (inicialization and properties) and a pointer to the virtual table (vtable wich contains the function pointers)
 
     for shape in vec_of_shapes {
         print_area(shape);

@@ -24,7 +24,7 @@ impl Shape for Rectangle {
 }
 
 fn print_area(shape: Box<dyn Shape>) {
-    println!("Area: {}", shape.area());
+    println!("Area: {}", shape.area()); // here we could use *(shape).area() to dereference the Box but it is not necessary, the compiler will do it for us
 }
 
 fn main() {
@@ -40,9 +40,9 @@ fn main() {
     };
 
     let vec_of_shapes: Vec<Box<dyn Shape>> = vec![Box::new(circle), Box::new(rectangle)];
-    // this dyn is called trait objects, this is also a DST (dynamically sizes type), which allow to use dynamic dispatch, 
+    // this dyn is called trait objects, this is also a DST (dynamically sizes type), which allow to use dynamic dispatch,
     // where the function to be called is determined at runtime
-    // it stores a fat pointer, which is a pointer to the object and a pointer to the virtual table (vtable wich contains the function pointers)
+    // it stores a fat pointer, which is a pointer to the object data (inicialization and properties) and a pointer to the virtual table (vtable wich contains the function pointers)
 
     for shape in vec_of_shapes {
         print_area(shape);
