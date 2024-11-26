@@ -1,0 +1,6 @@
+[package]
+name = "class_123_trait_objects_and_virtual_table"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
