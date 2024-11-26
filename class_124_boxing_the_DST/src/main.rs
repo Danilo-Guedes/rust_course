@@ -23,12 +23,15 @@ impl Shape for Rectangle {
     }
 }
 
-fn print_area(shape: &dyn Shape) {
+fn print_area(shape: Box<dyn Shape>) {
     println!("Area: {}", shape.area());
 }
 
 fn main() {
     println!("\n\n-------------------\n\n");
+
+    // BOX is a smart pointer that points to heap allocated memory rather than stack allocated memory.
+    // is called smart pointer because can automatically handles the allocation and deallocation of heap memory.
 
     let circle = Circle { radius: 5.0 };
     let rectangle = Rectangle {
@@ -36,8 +39,8 @@ fn main() {
         height: 6.0,
     };
 
-    let vec_of_shapes: Vec<&dyn Shape> = vec![&circle, &rectangle];
-    // this dyn is called trait objects, this is also a DST (dynamically sizes type), which allow to use dynamic dispatch,
+    let vec_of_shapes: Vec<Box<dyn Shape>> = vec![Box::new(circle), Box::new(rectangle)];
+    // this dyn is called trait objects, this is also a DST (dynamically sizes type), which allow to use dynamic dispatch, 
     // where the function to be called is determined at runtime
     // it stores a fat pointer, which is a pointer to the object and a pointer to the virtual table (vtable wich contains the function pointers)
 
@@ -46,4 +49,6 @@ fn main() {
     }
 
     println!("\n\n-------------------\n\n");
+
+    // println!("Circle radius: {}", circle.radius);  // this will ERROR because circle has been moved to the vec_of_shapes
 }
