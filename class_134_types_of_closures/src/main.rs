@@ -3,7 +3,7 @@ fn main() {
     
     let y = 1;
 
-    //even though this 2 clore are equal, by the fact they capture the enviroment
+    // even though this 2 clore are indentical, by the fact they capture the enviroment
     // the compiler generate differente types for them, so they can't be stored in the same vector
     // that's why we need to use Box<dyn Fn(i32) -> i32> to store them in the same vector
 
