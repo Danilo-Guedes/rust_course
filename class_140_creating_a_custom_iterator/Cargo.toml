@@ -1,0 +1,6 @@
+[package]
+name = "class_140_creating_a_custom_iterator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
