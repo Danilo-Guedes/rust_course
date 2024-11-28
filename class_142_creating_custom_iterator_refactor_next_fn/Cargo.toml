@@ -1,0 +1,6 @@
+[package]
+name = "class_142_creating_custom_iterator_refactor_next"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
