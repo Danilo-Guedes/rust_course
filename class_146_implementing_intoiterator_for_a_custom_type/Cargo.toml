@@ -1,0 +1,6 @@
+[package]
+name = "class_146_implementing_intoiterator_for_a_custom_type"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
