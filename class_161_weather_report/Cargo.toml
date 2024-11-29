@@ -1,0 +1,19 @@
+[package]
+name = "class_161_weather_report"
+version = "0.1.0"
+edition = "2021"
+default-run = "weather_app"
+
+[dependencies]
+
+[[bin]]
+name = "weather_app"
+path = "src/main.rs"
+
+[[bin]]
+name = "report_app"
+path = "src/bin/report.rs"
+
+[[bin]]
+name = "alert"
+path = "src/bin/alert.rs"
