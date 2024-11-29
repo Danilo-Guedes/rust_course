@@ -39,29 +39,53 @@ impl<'a> PriorityIterator<'a> {
 impl<'a> Iterator for PriorityIterator<'a> {
     type Item = &'a Task;
     fn next(&mut self) -> Option<Self::Item> {
-        while self.index < self.tasks.len() {
-            let curr_task = &self.tasks[self.index];
-            self.index += 1;
-            if self.current_priority == curr_task.priority {
-                return Some(curr_task);
-            } 
-            // else {
-            //     if self.current_priority == Priority::High {
-            //         self.current_priority = Priority::Medium,
-            //     } else if self.current_priority == Priority::Medium {
-            //         self.current_priority = Priority::Low
-            //     }
-            // }
+        loop {
+            if let Some(pos) = self.tasks[self.index..]
+                .iter()
+                .position(|x| x.priority == self.current_priority)
+            {
+                self.index += pos + 1;
+                return Some(&self.tasks[self.index - 1]);
+            } else {
+                self.current_priority = match self.current_priority {
+                    Priority::High => Priority::Medium,
+                    Priority::Medium => Priority::Low,
+                    Priority::Low => return None,
+                };
+                self.index = 0;
+            }
         }
-        None
     }
 }
+
+// fn execute_tasks_by_priority(all_tasks: &[Task], start_priority: Priority) {
+//     let mut current_priority = start_priority;
+//     let mut index = 0;
+//     loop {
+//         if let Some(pos) = all_tasks[index..]
+//             .iter()
+//             .position(|x| x.priority == current_priority)
+//         {
+//             index += pos + 1;
+//             execute_task(&all_tasks[index - 1]);
+//         } else {
+//             current_priority = match current_priority {
+//                 Priority::High => Priority::Medium,
+//                 Priority::Medium => Priority::Low,
+//                 Priority::Low => break,
+//             };
+//             index = 0;
+//         }
+//     }
+// }
 
 fn execute_task(task: &Task) {
     println!("Executing {:?}: {:?}", task.name, task.priority);
 }
 
 fn main() {
+    println!("\n\n---------------------\n\n");
+
     let all_tasks = vec![
         Task::new("Laundry", Priority::Low),
         Task::new("Emails", Priority::High),
@@ -74,7 +98,11 @@ fn main() {
 
     let prioritized_tasks = PriorityIterator::new(&all_tasks, Priority::High);
 
+    // execute_tasks_by_priority(&all_tasks, Priority::High);
+
     for task in prioritized_tasks {
         execute_task(task);
     }
+
+    println!("\n\n---------------------\n\n");
 }
