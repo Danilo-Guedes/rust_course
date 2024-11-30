@@ -42,5 +42,4 @@ fn main() {
     println!("Year updated!");
 
     println!("\n\n---------------------------\n\n");
-
 }
