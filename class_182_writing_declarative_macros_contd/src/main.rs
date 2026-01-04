@@ -15,6 +15,11 @@ macro_rules! hello {
             println!("Hello, {} in each line!", $names);
         )+
     };
+    ($($num:expr), +) => {
+        $(
+            println!("Hello Number {}!", $num);
+        )+
+    };
 }
 
 fn main() {
@@ -22,4 +27,8 @@ fn main() {
     hello!("Danilo");
     hello!("Danilo", "Amanda");
     hello!("Danilo", "Amanda", "Giovanna");
+
+    hello!(1, 2, 3);
+
+    hello!((5 + 2), (5 - 2), (3 * 2));
 }
