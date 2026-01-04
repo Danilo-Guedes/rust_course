@@ -8,7 +8,9 @@ macro_rules! hello {
     ($name1:literal, $name2:literal) => {
         println!("Hello, {} and {}!", $name1, $name2);
     };
-    ($($names:literal), +) => {
+    ($name1:literal, $name2:literal,$($names:literal), +) => {
+                println!("Hello, {} and {}!", $name1, $name2);
+                println!("And also:");
         $(
             println!("Hello, {} in each line!", $names);
         )+
