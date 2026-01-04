@@ -1,0 +1,6 @@
+[package]
+name = "class_182_writing_declarative_macros_contd"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
