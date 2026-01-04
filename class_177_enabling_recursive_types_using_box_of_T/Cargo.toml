@@ -1,0 +1,6 @@
+[package]
+name = "class_177_enabling_recursive_types_using_box_of_T"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
